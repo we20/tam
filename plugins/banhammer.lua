@@ -87,7 +87,7 @@ do
     local user_id = result.from.id
     local full_name = (result.from.first_name or '')..' '..(result.from.last_name or '')
     if is_chat_msg(result) and not is_sudo(result) then
-      if extra.match == 'kick' then
+      if extra.match == 'sick' then
         chat_del_user('chat#id'..chat_id, 'user#id'..user_id, ok_cb, false)
       elseif extra.match == 'sicktir' then
         ban_user(user_id, chat_id)
