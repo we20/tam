@@ -1,4 +1,4 @@
-- data saved to data/moderation.json
+-- data saved to data/moderation.json
 do
 
   local function export_chat_link_cb(extra, success, result)
