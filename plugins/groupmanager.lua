@@ -1,4 +1,4 @@
--- data saved to data/moderation.json
+- data saved to data/moderation.json
 do
 
   local function export_chat_link_cb(extra, success, result)
@@ -117,7 +117,8 @@ do
           local rules = string.gsub(msg.to.print_name, '_', ' ')..' rules:\n\n'..rules
           return rules
         -- group link {get|set}
-        elseif matches[1] == 'clink' then
+        elseif matches[1] == 'link' then
+          if matches[2] == 'get' then
             if data[tostring(msg.to.id)]['link'] then
               local about = get_description(msg, data)
               local link = data[tostring(msg.to.id)]['link']
@@ -125,7 +126,7 @@ do
             else
               return 'Invite link does not exist.\nTry !link set to generate.'
             end
-          elseif matches[1] == 'glink' and is_mod(msg) then
+          elseif matches[2] == 'set' and is_mod(msg) then
             msgr = export_chat_link(get_receiver(msg), export_chat_link_cb, {data=data, msg=msg})
           end
 	      elseif matches[1] == 'group' then
@@ -359,9 +360,9 @@ do
     description = 'Plugin to manage group chat.',
     usage = {
       admin = {
-        '!cgroup <group_name> : Make/create a new group.',
-        '!addgp : Add group to moderation list.',
-        '!remgp : Remove group from moderation list.'
+        '!mkgroup <group_name> : Make/create a new group.',
+        '!addgroup : Add group to moderation list.',
+        '!remgroup : Remove group from moderation list.'
       },
       moderator = {
         '!group <lock|unlock> bot : {Dis}allow APIs bots.',
@@ -392,8 +393,7 @@ do
       '^!(group) (lock) (.*)$',
       '^!(group) (settings)$',
       '^!(group) (unlock) (.*)$',
-      '^!(clink)$',
-      '^!(glink)$',
+      '^!(link) (.*)$',
       '^!(cgroup) (.*)$',
       '%[(photo)%]',
       '^!(remgp)$',
