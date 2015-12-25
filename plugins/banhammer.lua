@@ -1,5 +1,7 @@
 -- data saved to moderation.json
 
+-- data saved to moderation.json
+
 do
 
   -- make sure to set with value that not higher than stats.lua
@@ -37,7 +39,7 @@ do
 
   local function superunban_user(user_id, chat_id)
     redis:del('superbanned:'..user_id)
-    return 'User '..user_id..' unsicktired'
+    return 'User '..user_id..' unbanned'
   end
 
   local function action_by_id(extra, success, result)
@@ -50,25 +52,25 @@ do
         if matches[2] == tostring(v.id) then
           group_member = true
           local full_name = (v.first_name or '')..' '..(v.last_name or '')
-          if matches[1] == 'sicktir' then
+          if matches[1] == 'ban' then
             ban_user(matches[2], chat_id)
-            send_large_msg(receiver, full_name..' ['..matches[2]..'] sicktired')
-          elseif matches[1] == 'gsick' then
+            send_large_msg(receiver, full_name..' ['..matches[2]..'] banned')
+          elseif matches[1] == 'superban' then
             superban_user(matches[2], chat_id)
-            send_large_msg(receiver, full_name..' ['..matches[2]..'] globally sicked from groups!')
+            send_large_msg(receiver, full_name..' ['..matches[2]..'] globally banned!')
           elseif matches[1] == 'kick' then
             kick_user(matches[2], chat_id)
           end
         end
       end
-      if matches[1] == 'unsicktir' then
+      if matches[1] == 'unban' then
         if is_banned(matches[2], chat_id) then
           unban_user(matches[2], chat_id)
-          send_large_msg(receiver, 'User with ID ['..matches[2]..'] is unsicktired from '..group_name..' group')
+          send_large_msg(receiver, 'User with ID ['..matches[2]..'] is unbanned.')
         else
           send_large_msg(receiver, 'No user with ID '..matches[2]..' in (super)ban list.')
         end
-      elseif matches[1] == 'gunsick' then
+      elseif matches[1] == 'superunban' then
         if is_super_banned(matches[2]) then
           superunban_user(matches[2], chat_id)
           send_large_msg(receiver, 'User with ID ['..matches[2]..'] is globally unbanned.')
@@ -87,20 +89,20 @@ do
     local user_id = result.from.id
     local full_name = (result.from.first_name or '')..' '..(result.from.last_name or '')
     if is_chat_msg(result) and not is_sudo(result) then
-      if extra.match == 'sick' then
+      if extra.match == 'kick' then
         chat_del_user('chat#id'..chat_id, 'user#id'..user_id, ok_cb, false)
-      elseif extra.match == 'sicktir' then
+      elseif extra.match == 'ban' then
         ban_user(user_id, chat_id)
-        send_large_msg('chat#id'..chat_id, 'User '..user_id..' sicktired')
-      elseif extra.match == 'gsick' then
+        send_large_msg('chat#id'..chat_id, 'User '..user_id..' banned')
+      elseif extra.match == 'superban' then
         superban_user(user_id, chat_id)
-        send_large_msg('chat#id'..chat_id, full_name..' ['..user_id..'] globally sicked from groups!')
-      elseif extra.match == 'unsicktir' then
+        send_large_msg('chat#id'..chat_id, full_name..' ['..user_id..'] globally banned!')
+      elseif extra.match == 'unban' then
         unban_user(user_id, chat_id)
-        send_large_msg('chat#id'..chat_id, 'User '..user_id..' unsicktired from '..group_name..' group ')
-      elseif extra.match == 'gunsick' then
+        send_large_msg('chat#id'..chat_id, 'User '..user_id..' unbanned')
+      elseif extra.match == 'superunban' then
         superunban_user(user_id, chat_id)
-        send_large_msg('chat#id'..chat_id, full_name..' ['..user_id..'] globally sicked from groups!')
+        send_large_msg('chat#id'..chat_id, full_name..' ['..user_id..'] globally unbanned!')
       elseif extra.match == 'whitelist' then
         redis:set('whitelist:user#id'..user_id, true)
         send_large_msg('chat#id'..chat_id, full_name..' ['..user_id..'] whitelisted')
@@ -131,18 +133,18 @@ do
         if not is_sudoers then
           if extra.match == 'kick' then
             chat_del_user('chat#id'..chat_id, 'user#id'..result.id, ok_cb, false)
-          elseif extra.match == 'sicktir' then
+          elseif extra.match == 'ban' then
             ban_user(user_id, chat_id)
-            send_large_msg('chat#id'..chat_id, 'User @'..username..' sicktired')
-          elseif extra.match == 'gsick' then
+            send_large_msg('chat#id'..chat_id, 'User @'..username..' banned')
+          elseif extra.match == 'superban' then
             superban_user(user_id, chat_id)
-            send_large_msg('chat#id'..chat_id, 'User @'..username..' ['..user_id..'] globally sicked from groups!')
+            send_large_msg('chat#id'..chat_id, 'User @'..username..' ['..user_id..'] globally banned!')
           elseif extra.match == 'unban' then
             unban_user(user_id, chat_id)
-            send_large_msg('chat#id'..chat_id, 'User @'..username..' unsicktired from ..group_name..' group', ok_cb,  true)
-          elseif extra.match == 'gunsick' then
+            send_large_msg('chat#id'..chat_id, 'User @'..username..' unbanned', ok_cb,  true)
+          elseif extra.match == 'superunban' then
             superunban_user(user_id, chat_id)
-            send_large_msg('chat#id'..chat_id, 'User @'..username..' ['..user_id..'] globally unsicked from groups!')
+            send_large_msg('chat#id'..chat_id, 'User @'..username..' ['..user_id..'] globally unbanned!')
           end
         end
       else
@@ -159,9 +161,9 @@ do
     if anti_spam_stat == 'kick' then
       kick_user(user_id, chat_id)
       send_large_msg('chat#id'..chat_id, 'User '..user_id..' is '..splooder)
-    elseif anti_spam_stat == 'sicktir' then
+    elseif anti_spam_stat == 'ban' then
       ban_user(user_id, chat_id)
-      send_large_msg('chat#id'..chat_id, 'User '..user_id..' is '..splooder..'. sicktired')
+      send_large_msg('chat#id'..chat_id, 'User '..user_id..' is '..splooder..'. Banned')
     end
     msg = nil
   end
@@ -269,17 +271,17 @@ do
     local user = 'user#id'..(matches[2] or '')
 
     if is_chat_msg(msg) then
-      if matches[1] == 'sickme' then
+      if matches[1] == 'kickme' then
         if is_sudo(msg) or is_admin(msg) then
           return 'I won\'t kick an admin!'
         elseif is_mod(msg) then
-          return 'I won\'t sick a moderator!'
+          return 'I won\'t kick a moderator!'
         else
           kick_user(msg.from.id, msg.to.id)
         end
       end
       if is_mod(msg) then
-        if matches[1] == 'sick' then
+        if matches[1] == 'kick' then
           if msg.reply_id then
             msgr = get_message(msg.reply_id, action_by_reply, {msg=msg, match=matches[1]})
           elseif string.match(matches[2], '^%d+$') then
@@ -287,7 +289,7 @@ do
           elseif string.match(matches[2], '^@.+$') then
             msgr = res_user(string.gsub(matches[2], '@', ''), resolve_username, {msg=msg, match=matches[1]})
           end
-        elseif matches[1] == 'sicktir' then
+        elseif matches[1] == 'ban' then
           if msg.reply_id then
             msgr = get_message(msg.reply_id, action_by_reply, {msg=msg, match=matches[1]})
           elseif string.match(matches[2], '^%d+$') then
@@ -301,7 +303,7 @@ do
             text = text..k..'. '..v..'\n'
           end
           return string.gsub(text, 'banned:'..msg.to.id..':', '')
-        elseif matches[1] == 'unsicktir' then
+        elseif matches[1] == 'unban' then
           if msg.reply_id then
             msgr = get_message(msg.reply_id, action_by_reply, {msg=msg, match=matches[1]})
           elseif string.match(matches[2], '^%d+$') then
@@ -313,7 +315,7 @@ do
         if matches[1] == 'antispam' then
           local data = load_data(_config.moderation.data)
           local settings = data[tostring(msg.to.id)]['settings']
-          if matches[2] == 'ban' then
+          if matches[2] == 'kick' then
             if settings.anti_flood ~= 'kick' then
               settings.anti_flood = 'kick'
               save_data(_config.moderation.data, data)
@@ -322,7 +324,7 @@ do
             end
           if matches[2] == 'ban' then
             if settings.anti_flood ~= 'ban' then
-              settings.anti_flood = 'sicktir'
+              settings.anti_flood = 'ban'
               save_data(_config.moderation.data, data)
             end
               return 'Anti flood and spam protection already enabled.\nOffender will be banned.'
@@ -392,25 +394,25 @@ do
     description = 'Plugin to manage bans, kicks and white/black lists.',
     usage = {
       user = {
-        '!sickme : Kick yourself out of this group.'
+        '!kickme : Kick yourself out of this group.'
       },
       admin = {
-        '!sickgp : If type in reply, will ban user globally.',
-        '!sickgp <user_id>/@<username> : Kick user_id/username from all chat and kicks it if joins again',
-        '!sickungp : If type in reply, will unban user globally.',
-        '!sickungp <user_id>/@<username> : Unban user_id/username globally.'
+        '!superban : If type in reply, will ban user globally.',
+        '!superban <user_id>/@<username> : Kick user_id/username from all chat and kicks it if joins again',
+        '!superunban : If type in reply, will unban user globally.',
+        '!superunban <user_id>/@<username> : Unban user_id/username globally.'
       },
       moderator = {
         '!antispam kick : Enable flood and spam protection. Offender will be kicked.',
         '!antispam ban : Enable flood and spam protection. Offender will be banned.',
         '!antispam disable : Disable flood and spam protection',
-        '!sicktir : If type in reply, will ban user from chat group.',
-        '!sicktir <user_id>/<@username>: Kick user from chat and kicks it if joins chat again',
+        '!ban : If type in reply, will ban user from chat group.',
+        '!ban <user_id>/<@username>: Kick user from chat and kicks it if joins chat again',
         '!banlist : List users banned from chat group.',
-        '!unsicktir : If type in reply, will unban user from chat group.',
-        '!unsicktir <user_id>/<@username>: Unban user',
-        '!sick : If type in reply, will kick user from chat group.',
-        '!sick <user_id>/<@username>: Kick user from chat group',
+        '!unban : If type in reply, will unban user from chat group.',
+        '!unban <user_id>/<@username>: Unban user',
+        '!kick : If type in reply, will kick user from chat group.',
+        '!kick <user_id>/<@username>: Kick user from chat group',
         '!whitelist : If type in reply, allow user to use the bot when whitelist mode is enabled',
         '!whitelist chat: Allow everybody on current chat to use the bot when whitelist mode is enabled',
         '!whitelist delete chat: Remove chat from whitelist',
@@ -422,14 +424,14 @@ do
     },
     patterns = {
       '^!(antispam) (.*)$',
-      '^!(sicktir) (.*)$',
-      '^!(sicktir)$',
+      '^!(ban) (.*)$',
+      '^!(ban)$',
       '^!(banlist)$',
-      '^!(unsicktir) (.*)$',
-      '^!(unsicktir)$',
-      '^!(sick) (.+)$',
-      '^!(sick)$',
-      '^!(sickme)$',
+      '^!(unban) (.*)$',
+      '^!(unban)$',
+      '^!(kick) (.+)$',
+      '^!(kick)$',
+      '^!(kickme)$',
       '^!!tgservice (.+)$',
       '^!(whitelist)$',
       '^!(whitelist) (chat)$',
@@ -439,10 +441,10 @@ do
       '^!(whitelist) (enable)$',
       '^!(whitelist) (user) (%d+)$',
       '^!(unwhitelist)$',
-      '^!(sickgp)$',
-      '^!(sickgp) (.*)$',
-      '^!(sickungp)$',
-      '^!(sickungp) (.*)$'
+      '^!(superban)$',
+      '^!(superban) (.*)$',
+      '^!(superunban)$',
+      '^!(superunban) (.*)$'
     },
     run = run,
     pre_process = pre_process
