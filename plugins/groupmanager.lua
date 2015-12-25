@@ -53,7 +53,7 @@ do
       local data = load_data(_config.moderation.data)
 
       -- create a group
-      if matches[1] == 'mkgroup' and matches[2] and is_mod(msg) then
+      if matches[1] == 'cgroup' and matches[2] and is_mod(msg) then
         create_group_chat (msg.from.print_name, matches[2], ok_cb, false)
 	      return 'Group '..string.gsub(matches[2], '_', ' ')..' has been created.'
       -- add a group to be moderated
@@ -78,7 +78,7 @@ do
         save_data(_config.moderation.data, data)
         return 'Group has been added.'
       -- remove group from moderation
-      elseif matches[1] == 'remgroup' and is_admin(msg) then
+      elseif matches[1] == 'remgp' and is_admin(msg) then
         if not data[tostring(msg.to.id)] then
           return 'Group is not added.'
         end
@@ -117,8 +117,7 @@ do
           local rules = string.gsub(msg.to.print_name, '_', ' ')..' rules:\n\n'..rules
           return rules
         -- group link {get|set}
-        elseif matches[1] == 'link' then
-          if matches[2] == 'get' then
+        elseif matches[1] == 'clink' then
             if data[tostring(msg.to.id)]['link'] then
               local about = get_description(msg, data)
               local link = data[tostring(msg.to.id)]['link']
@@ -126,7 +125,7 @@ do
             else
               return 'Invite link does not exist.\nTry !link set to generate.'
             end
-          elseif matches[2] == 'set' and is_mod(msg) then
+          elseif matches[1] == 'clink' and is_mod(msg) then
             msgr = export_chat_link(get_receiver(msg), export_chat_link_cb, {data=data, msg=msg})
           end
 	      elseif matches[1] == 'group' then
@@ -360,9 +359,9 @@ do
     description = 'Plugin to manage group chat.',
     usage = {
       admin = {
-        '!mkgroup <group_name> : Make/create a new group.',
-        '!addgroup : Add group to moderation list.',
-        '!remgroup : Remove group from moderation list.'
+        '!cgroup <group_name> : Make/create a new group.',
+        '!addgp : Add group to moderation list.',
+        '!remgp : Remove group from moderation list.'
       },
       moderator = {
         '!group <lock|unlock> bot : {Dis}allow APIs bots.',
@@ -387,16 +386,17 @@ do
     },
     patterns = {
       '^!(about)$',
-      '^!(addgroup)$',
+      '^!(addgp)$',
       '%[(audio)%]',
       '%[(document)%]',
       '^!(group) (lock) (.*)$',
       '^!(group) (settings)$',
       '^!(group) (unlock) (.*)$',
-      '^!(link) (.*)$',
-      '^!(mkgroup) (.*)$',
+      '^!(clink)$',
+      '^!(glink)$',
+      '^!(cgroup) (.*)$',
       '%[(photo)%]',
-      '^!(remgroup)$',
+      '^!(remgp)$',
       '^!(rules)$',
       '^!(setabout) (.*)$',
       '^!(setname) (.*)$',
