@@ -43,7 +43,7 @@ do
 
   local function run(msg, matches)
     if is_chat_msg(msg) and is_mod(msg) then
-      if msg.reply_id and msg.text == "!invite" then
+      if msg.reply_id and msg.text == "biyaresg" then
         msgr = get_message(msg.reply_id, action_by_reply, {msg=msg})
       end
       if string.match(matches[1], '^%d+$') then
@@ -64,16 +64,16 @@ do
     usage = {
       moderator = {
         -- Need space in front of this, so bot won't consider it as a command
-        ' !invite : If type by replying, bot will then inviting the replied user.',
-        ' !invite <user_id> : Invite by their user_id.',
-        ' !invite @<user_name> : Invite by their @<user_name>.',
-        ' !invite <print_name> : Invite by their print_name.'
+        ' !biyaresh : If type by replying, bot will then inviting the replied user.',
+        ' biyaresh <user_id> : Invite by their user_id.',
+        ' biyaresh @<user_name> : Invite by their @<user_name>.',
+        ' biyaresh <print_name> : Invite by their print_name.'
       },
     },
     patterns = {
-      '^!invite$',
-      '^!invite (.*)$',
-      '^!invite (%d+)$'
+      '^!biyaresh$',
+      '^biyaresh (.*)$',
+      '^biyaresh (%d+)$'
     },
     run = run,
     moderated = true
