@@ -125,7 +125,7 @@ do
             else
               return 'Invite link does not exist.\nTry !link set to generate.'
             end
-          elseif matches[1] == 'clink' and is_mod(msg) then
+          elseif matches[1] == 'glink' and is_mod(msg) then
             msgr = export_chat_link(get_receiver(msg), export_chat_link_cb, {data=data, msg=msg})
           end
 	      elseif matches[1] == 'group' then
