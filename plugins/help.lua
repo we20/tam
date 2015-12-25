@@ -111,8 +111,6 @@ local function telegram_help()
   text = text..'\n'..'There are '..i..' plugins help available.'
   text = text..'\n'..'Write "!help [plugin name]" or "!help [plugin number]" for more info.'
   text = text..'\n'..'Or "!help all" to show all info.'
-   text = text..'\n'..'for a group enjoy @ArashFLuxter
-    text = text..'\n'..'Creator : @ArashFluxter
   return text
 end
  
@@ -164,7 +162,7 @@ return {
     "!help: Show list of plugins.",
     "!help all: Show all commands for every plugin.",
     "!help [plugin name]: Commands for that plugin.",
-    "!help [number]: Commands for that plugin. Type !help to get the plugin number."
+    "!help [number]: Commands for that plugin. Type !help to get the plugin number creator :@ArashFLuxter."
   },
   patterns = {
     "^!help$",
