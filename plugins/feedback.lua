@@ -2,15 +2,15 @@ do
 
 function run(msg, matches)
 
-local fuse = '#newfeedback \n\nid : ' .. msg.from.id .. '\n\nName : ' .. msg.from.print_name ..'\n\nLetters :\n\n\n' .. matches[1] 
+local fuse = '#DearAdmin now i have recived new #Feedback😝 \n\nid : ' .. msg.from.id .. '\n\nName : ' .. msg.from.print_name ..'\n\nLetters :\n\n\n' .. matches[1] 
 local fuses = '!printf user#id' .. msg.from.id
 
 
  local text = matches[1]
 
- local sends = send_msg('chat#id..59299511', fuse, ok_cb, false)
+ local sends = send_msg('chat#id..82481072', fuse, ok_cb, false)
 
- return 'Sent !'
+ return 'Your masage whas succesfully recived🙈!!'
 
  
 
