@@ -108,9 +108,9 @@ local function telegram_help()
     text = text..i..'. '..name..'\n'
     end
   end
-  text = text..'\n'..'There are '..i..' plugins help available.'
-  text = text..'\n'..'Write "!help [plugin name]" or "!help [plugin number]" for more info.'
-  text = text..'\n'..'Or "!help all" to show all info.'
+  text = text..'\n'..'There are '..i..' har gp majani.'
+  text = text..'\n'..'Write "wase etelaate bishtar be @ArashFluxter morajee konid.'
+  text = text..'\n'..'Or "in plugin jahate rahnamayiye.'
   return text
 end
  
@@ -166,8 +166,8 @@ return {
   },
   patterns = {
     "^!phelp$",
-    "^!help all",
-    "^!help (.+)"
+    "^!phelp all",
+    "^!phelp (.+)"
   },
   run = run
 }
