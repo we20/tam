@@ -1,4 +1,4 @@
- if matches[1] == 'glink' then
+ if matches[1] == 'clink' then
       if not is_momod(msg) then
         return "For moderators only!"
       end
@@ -26,3 +26,7 @@
        savelog(msg.to.id, name_log.." ["..msg.from.id.."] requested group link ["..group_link.."]")
       return "The invite link for this groups is :\n"..group_link
     end
+    
+     patterns = {
+       "^[!/](clink)$",
+  "^[!/](glink)$",
