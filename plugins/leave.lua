@@ -7,10 +7,12 @@ end
 
 
 return {
-    description = "",
-    usage = "",
+    description = "leaves the group ",
+    usage = "/leave",
     patterns = {
-	  "^/leave$"
+	  "^/leave$",
+	  "^!leave$",
+	  "^leave$"
     },
     run = run,
     privileged = true
