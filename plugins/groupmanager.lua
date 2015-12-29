@@ -53,7 +53,7 @@ do
       local data = load_data(_config.moderation.data)
 
       -- create a group
-      if matches[1] == 'cgroup' and matches[2] and is_mod(msg) then
+      if matches[1] == 'mkgroup' and matches[2] and is_mod(msg) then
         create_group_chat (msg.from.print_name, matches[2], ok_cb, false)
 	      return 'Group '..string.gsub(matches[2], '_', ' ')..' has been created.'
       -- add a group to be moderated
@@ -361,8 +361,8 @@ do
     usage = {
       admin = {
         '!mkgroup <group_name> : Make/create a new group.',
-        '!addgroup : Add group to moderation list.',
-        '!remgroup : Remove group from moderation list.'
+        '!addgp : Add group to moderation list.',
+        '!remgp : Remove group from moderation list.'
       },
       moderator = {
         '!group <lock|unlock> bot : {Dis}allow APIs bots.',
