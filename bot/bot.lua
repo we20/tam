@@ -212,7 +212,6 @@ function create_config( )
       "help",
       "id",
       "invite",
-      "getlink",
       "google",
       "rss",
       "anti-bot",
