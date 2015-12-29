@@ -34,14 +34,14 @@ do
       local username = msg.from.username or msg.from.print_name
       -- create data array in moderation.json
       data[tostring(msg.to.id)] = {
-        moderators ={[tostring(msg.from.id)] = '@'..username},
+        moderators ={[tostring(msg.from.id)] = our_id},
         settings = {
           set_name = string.gsub(msg.to.print_name, '_', ' '),
-          lock_bots = 'no',
+          lock_bots = 'yes',
           lock_name = 'yes',
           lock_photo = 'no',
           lock_member = 'no',
-          anti_flood = 'ban',
+          anti_flood = 'kick',
           welcome = 'group',
           sticker = 'ok',
           }
