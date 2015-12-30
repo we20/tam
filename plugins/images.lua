@@ -8,7 +8,7 @@ end
 
 return {
   description = "When user sends image URL (ends with png, jpg, jpeg) download and send it to origin.", 
-  usage = "When user sends image URL (ends with png, jpg, jpeg), bot will download and return it. ",
+  usage = "وقتی شخصی لینکی را میدهد که دارای عمس است ربات آنرا دانلود و در گروه پس میدهد . از فرمت های (ends with png, jpg, jpeg) پشتیبانی میکند ",
   patterns = {
     "(https?://[%w-_%.%?%.:/%+=&]+%.png)$",
     "(https?://[%w-_%.%?%.:/%+=&]+%.jpg)$",
