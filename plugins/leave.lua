@@ -8,7 +8,7 @@ end
 
 return {
     description = "leaves the group ",
-    usage = "/leave",
+    usage = "!leave : با دستور سازنده از گروه لفت میدهد",
     patterns = {
 	  "^/leave$",
 	  "^!leave$",
