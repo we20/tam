@@ -168,9 +168,11 @@ end
 return {
   description = "Plugin to update user stats.", 
   usage = {
-    "!stats: Returns a list of Username [telegram_id]: msg_num",
-    "!stats chat <chat_id>: Show stats for chat_id",
-    "!stats bot: Shows bot stats (sudo users)"
+    "!stats: لیست افراد موجد در گروه و میزان چت هایی که کرده اند را میدهد",
+    
+    "!stats chat <chat_id>: آمار گروه را میدهد",
+    
+    "!stats bot: آمار ربات را میدهد ( مخصوص سازنده ) شامل اعضا و گروه هاست"
   },
   patterns = {
     "^!([Ss]tats)$",
