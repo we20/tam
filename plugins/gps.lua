@@ -19,8 +19,8 @@ function run(msg, matches)
 end
 
 return {
-  description = "generates a map showing the given GPS coordinates", 
-  usage = "!gps latitude,longitude: generates a map showing the given GPS coordinates",
+  description = "موقعیت مکانی مورد نظرتان را به صورت عکس و لوکیشن خواهد داد", 
+  usage = "!gps City,adress: نشان دادن محل مورد نظر در نقشه",
   patterns = {"^!gps ([^,]*)[,%s]([^,]*)$"}, 
   run = run 
 }
