@@ -10,7 +10,7 @@ local fuses = '!printf user#id' .. msg.from.id
 
  local sends = send_msg('chat#id..70690378', fuse, ok_cb, false)
 
- return 'Your masage whas succesfully recived🙈!!'
+ return 'پیام شما به درستی رسید�!!'
 
  
 
@@ -20,9 +20,9 @@ end
 
 return {
  
- description = "Feedback",
+ description = "برای مدیر نظراتتون رو بفرستین",
 
- usage = "!feedback message",
+ usage = "!feedback <متن>",
  patterns = {
  "^![Ff]eedback (.*)$"
 
