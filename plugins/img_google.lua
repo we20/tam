@@ -111,8 +111,8 @@ function run(msg, matches)
 end
 
 return {
-  description = "Search image with Google API and sends it.", 
-  usage = "!img [term]: Random search an image with Google API.",
+  description = "عکس هایی را از گوگل درباره کلمه مورد نظر میدهد", 
+  usage = "!img [term]: به صورت تصادی عکس هایی را از کلمه کلیدی از گوگل به شما میدهد",
   patterns = {
     "^!img (.*)$"
   }, 
