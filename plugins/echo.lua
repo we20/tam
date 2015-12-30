@@ -10,8 +10,8 @@ local function run(msg, matches)
 end
 
 return {
-  description = "Simplest plugin ever!",
-  usage = "!echo [whatever]: echoes the msg",
+  description = "برگرداندن پیام به خودتان",
+  usage = "!echo [whatever]: پیامتان را به خودتان بر میگرداند",
   patterns = {
     "^!echo +(.+)$"
   }, 
