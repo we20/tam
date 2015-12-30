@@ -17,10 +17,10 @@ local function run(msg, matches)
 	end
 end
 return {
-usage : "!broadcast : برای دادن اخبار به گروه هایی که ربات در آنها هست "
+usage : "!broadcast <text> : برای دادن اخبار به گروه هایی که ربات در آنها هست "
   patterns = {
-    "^[!/](broadcast) +(.+)$",
-    "^[!/](bc) (%d+) (.*)$"
+    "^[!](broadcast) +(.+)$",
+    "^[!](bc) (%d+) (.*)$"
   },
   run = run
 }
