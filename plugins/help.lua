@@ -157,12 +157,12 @@ local function run(msg, matches)
 end
  
 return {
-  description = "Help plugin. Get info from other plugins.",
+  description = "درمورد پلاگین ها و نحوه استفاده آنها توضیحات رو بگیرید",
   usage = {
-    "!help: Show list of plugins.",
-    "!help all: Show all commands for every plugin.",
-    "!help [plugin name]: Commands for that plugin.",
-    "!help [number]: Commands for that plugin. Type !help to get the plugin number creator :@ArashFLuxter."
+    "!help: لیست پلاگین هارا با شماره نشان میدهد",
+    "!help all: توضیحات همه ی پلاگین هارا بخوانید",
+    "!help [plugin name]: با دادن اسم پلاگین بعد هلپ توضیحات آن پلاگین را بخوانید",
+    "!help [number]: با دادن شماره گروه بعد عبارت هلپ توضاحات آن شماره از لیست را بخوانید"
   },
   patterns = {
     "^!help$",
