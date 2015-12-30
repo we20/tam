@@ -137,14 +137,18 @@ do
     description = 'Plugin to manage other plugins. Enable, disable or reload.',
     usage = {
       moderator = {
-        '!plugins: list all plugins.',
-        '!plugins enable [plugin] chat: re-enable plugin only this chat.',
-        '!plugins disable [plugin] chat: disable plugin only this chat.'
+        '!plugins: لست تمامی پلاگین هارا بگیرید',
+        
+        '!plugins enable [plugin] chat: پلاگینیرا فقط در این چت فعال بکنید ',
+        
+        '!plugins disable [plugin] chat: پلاگینی را فقط در این چت غیر فعال بکنید '
       },
       sudo = {
-        '!plugins enable [plugin]: enable plugin.',
-        '!plugins disable [plugin]: disable plugin.',
-        '!plugins reload: reloads all plugins.'
+        '!plugins enable [plugin]: پلاگینی را به لیست پلاگین های موجود فعال اضافه بکنید',
+        
+        '!plugins disable [plugin]: پلاگینی را از لیست پلاگین های موجود فعال حذف بکنید',
+        
+        '!plugins reload: پلاگین هارا تازه سازی کنید '
       },
     },
     patterns = {
