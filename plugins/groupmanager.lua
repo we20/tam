@@ -360,29 +360,45 @@ do
     description = 'Plugin to manage group chat.',
     usage = {
       admin = {
-        '!cgroup <group_name> : Make/create a new group.',
-        '!addgp : Add group to moderation list.',
-        '!remgp : Remove group from moderation list.'
+        '!cgroup <group_name> : گروه جدیدی میسازد',
+        
+        '!addgp : گروه را به لیست گروه های ربات اضافه کن',
+        
+        '!remgp : گروه را از لیست گروه های ربات حذف بکن'
       },
       moderator = {
-        '!group <lock|unlock> bot : {Dis}allow APIs bots.',
-        '!group <lock|unlock> member : Lock/unlock group member.',
-        '!group <lock|unlock> name : Lock/unlock group name.',
-        '!group <lock|unlock> photo : Lock/unlock group photo.',
-        '!group settings : Show group settings.',
-        '!link <set> : Generate/revoke invite link.',
-        '!setabout <description> : Set group description.',
-        '!setname <new_name> : Set group name.',
-        '!setphoto : Set group photo.',
-        '!setrules <rules> : Set group rules.',
-        '!sticker warn : Sticker restriction, sender will be warned for the first violation.',
-        '!sticker kick : Sticker restriction, sender will be kick.',
-        '!sticker ok : Disable sticker restriction.'
+        '!group <lock|unlock> bot : از آمدن ربات جلوگیری کنید',
+        
+        '!group <lock|unlock> member : جلوگیری / اجازه برای آمدن اعضا به گروه',
+        
+        '!group <lock|unlock> name : جلوگیری / اجازه برای عوض کردن اسم گروه',
+        
+        '!group <lock|unlock> photo : جلوگیری / اجازه برای عوض کردن عکس گروه',
+        
+        '!group settings : تنظیمات گروه را نشان میدهد',
+        
+        '!link <set/get> : بساز / نشان بده لینک گروه را',
+        
+        '!setabout <description> : درباره ی گروه توضیحات بنویس',
+        
+        '!setname <new_name> : اسم گروه را عوض بکن',
+        
+        '!setphoto : عکس گروه را عوض بکن',
+        
+        '!setrules <rules> : قوانین گروه را عوض بکن',
+        
+        '!sticker warn : به شخصی که استیکر میدهد دفعه اول اخطار دفعه دوم کیک بکن',
+        
+        '!sticker kick : کسیکه استیکر میدهد را حذف بکن',
+        
+        '!sticker ok : اجازه ی دادن استیکر در گروه'
       },
       user = {
-        '!about : Read group description',
-        '!rules : Read group rules',
-        '!link <get> : Print invite link'
+        '!about : خواندن توضیحات درباره ی گروه',
+        
+        '!rules : خواندن قوانین گروه',
+        
+        '!link <get> : گرفتن لینک گروه'
       },
     },
     patterns = {
