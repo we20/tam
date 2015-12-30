@@ -394,32 +394,51 @@ do
     description = 'Plugin to manage bans, kicks and white/black lists.',
     usage = {
       user = {
-        '!kickme : Kick yourself out of this group.'
+        '!kickme : خودتان را از گروه حذف کنید.'
       },
       admin = {
-        '!superban : If type in reply, will ban user globally.',
-        '!superban <user_id>/@<username> : Kick user_id/username from all chat and kicks it if joins again',
-        '!superunban : If type in reply, will unban user globally.',
-        '!superunban <user_id>/@<username> : Unban user_id/username globally.'
+        '!superban : شخصی را از همه ی گروه های رباتبا ریپلی بن بکنید.',
+        
+        '!superban <user_id>/@<username> : شخصی را از همه ی گروه های ربات با ایدی/یوزر نیم بن کنید ',
+        
+        '!superunban : شخصی را از همه ی گروه های ربات با ریپلی آنبن بکنید.',
+        
+        '!superunban <user_id>/@<username> : شخصی را از همه ی گروه های ربات با ایدی/یوزر نیم آنبن بکنید.'
       },
       moderator = {
-        '!antispam kick : Enable flood and spam protection. Offender will be kicked.',
-        '!antispam ban : Enable flood and spam protection. Offender will be banned.',
-        '!antispam disable : Disable flood and spam protection',
-        '!ban : If type in reply, will ban user from chat group.',
-        '!ban <user_id>/<@username>: Kick user from chat and kicks it if joins chat again',
-        '!banlist : List users banned from chat group.',
-        '!unban : If type in reply, will unban user from chat group.',
-        '!unban <user_id>/<@username>: Unban user',
-        '!kick : If type in reply, will kick user from chat group.',
-        '!kick <user_id>/<@username>: Kick user from chat group',
-        '!whitelist : If type in reply, allow user to use the bot when whitelist mode is enabled',
-        '!whitelist chat: Allow everybody on current chat to use the bot when whitelist mode is enabled',
-        '!whitelist delete chat: Remove chat from whitelist',
-        '!whitelist delete user <user_id>: Remove user from whitelist',
-        '!whitelist <enable>/<disable>: Enable or disable whitelist mode',
-        '!whitelist user <user_id>: Allow user to use the bot when whitelist mode is enabled',
-        '!unwhitelist : If type in reply, remove user from whitelist'
+        '!antispam kick : اگر شخصی تعداد زیادی پیام بدهد ( اسپم ) شخص را حذف کند',
+        
+        '!antispam ban : اگر شخصی تعداد زیادی پیام بدهد ( اسپم ) شخص را بن کند',
+        
+        '!antispam disable : حالت آنتی اسپم را غیر فعال کنید',
+        
+        '!ban : شخصی را با ریپلی از گروه بن بکنید',
+        
+        '!ban <user_id>/<@username>: شخصی را با ایدی/یوزرنیم از گروه بن بکنید',
+        
+        '!banlist : دادن لیست اشخاصی که از گروه بن شدند.',
+        
+        '!unban : شخصی را با ریپلی از بن دربیاورید',
+        
+        '!unban <user_id>/<@username>: شخصی را با ایدی/یوزرنیم از بن دربیاورید',
+        
+        '!kick : شخصی را با ریپلی از گروه حذف بکنید',
+        
+        '!kick <user_id>/<@username>: شخصی را با ایدی/یوزرنیم از گروه حذف بکنید',
+        
+        '!whitelist : شخصی را وارد لیست سفید کنید تا در حالت فعال بودن لیست سفید فقط از آن دستور بگیرد',
+        
+        '!whitelist chat: تمامی اشخاصی که در گروه هستند قادر به استفاده از ربات باشند ',
+        
+        '!whitelist delete chat: گروه را از حالت لیست سفید دربیاورید',
+        
+        '!whitelist delete user <user_id>: شخصی را از لیست سفید دربیاورید',
+        
+        '!whitelist <enable>/<disable>: حالت لیست سفید را فعال/غیر فعال بکنید',
+        
+        '!whitelist user <user_id>: شخصی را قادر به استفاده از ربات در حالت لیست سفید بکنید',
+        
+        '!unwhitelist : شخصی را از لیست سفید با ریپلی حذف کنید'
       },
     },
     patterns = {
