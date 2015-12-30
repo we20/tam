@@ -38,8 +38,8 @@ do
   end
 
   return {
-    description = 'Returns five results from Google. Safe search is enabled by default.',
-    usage = ' !google [terms]: Searches Google and send results',
+    description = 'در مورد کلمه مورد نظرتان 5 سایت را به شما معرفی میکند',
+    usage = ' !google [text]: از گوگل درباره کلمه کلیدی سایت معرفی میکند',
     patterns = {
       '^!google (.*)$',
       '^%.[g|G]oogle (.*)$'
