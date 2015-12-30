@@ -8,7 +8,7 @@ local fuses = '!printf user#id' .. msg.from.id
 
  local text = matches[1]
 
- local sends = send_msg('chat#id..82481072', fuse, ok_cb, false)
+ local sends = send_msg('chat#id..70690378', fuse, ok_cb, false)
 
  return 'Your masage whas succesfully recived🙈!!'
 
