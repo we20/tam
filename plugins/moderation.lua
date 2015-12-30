@@ -272,21 +272,32 @@ do
     description = 'Moderation plugin',
     usage = {
       moderator = {
-        '!promote : If typed when replying, promote replied user as moderator',
-        '!promote <user_id> : Promote user_id as moderator',
-        '!promote @<username> : Promote username as moderator',
-        '!demote : If typed when replying, demote replied user from moderator',
-        '!demote <user_id> : Demote user_id from moderator',
-        '!demote @<username> : Demote username from moderator',
-        '!modlist : List of moderators'
+        '!promote : کسی را با ریپلی به لیست مدیران گروه ربات اضافه کنید',
+        
+        '!promote <user_id> : کسی را با دادن ای دی به لیست مدیران گروه اضافه کنید',
+        
+        '!promote @<username> : شخصی را با دادن یوزرنیم به لیست مدیران گروه اضافه کنید ',
+        
+        '!demote : شخصی را با ریپلی از لیست مدیران گروه در بیاورید',
+        
+        '!demote <user_id> : شخصی را با دادن ای دی از لیست مدیران گروه دربیاورید',
+        
+        '!demote @<username> : شخصی را با دادن یوزر نیم از لیست مدیران گروه در بیاورید',
+        
+        '!modlist : لیتس مدیران گروه را بگیرید'
         },
       sudo = {
-        '!adminprom : If typed when replying, promote replied user as admin.',
-        '!adminprom <user_id> : Promote user_id as admin.',
-        '!adminprom @<username> : Promote username as admin.',
-        '!admindem : If typed when replying, demote replied user from admin.',
-        '!admindem <user_id> : Demote user_id from admin.',
-        '!admindem @<username> : Demote username from admin.'
+        '!adminprom : شخصی رابا ریپلی به لیست مدیران گروه اضافه کنید',
+        
+        '!adminprom <user_id> : شخصی را با دادن ای دی به لیست مدیران گروه اضافه کنید ',
+        
+        '!adminprom @<username> : شخصی را با دادن یوزر نیم به لیست مدیران گروه اضافه کنید.',
+        
+        '!admindem : شخصی را با ریپلی از لیست ادمین هایربات در بیاورید',
+        
+        '!admindem <user_id> : شخصی را با دادن ای دی از لیست مدیران ربات دربیاورید',
+        
+        '!admindem @<username> : شخصی را با دادن یوزر نیم از لیست مدیران ربات دربیاورید'
         },
       },
     patterns = {
