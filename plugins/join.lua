@@ -45,8 +45,8 @@ do
   return {
     description = 'Invite the bot into a group chat via its invite link.',
     usage = {
-      '!join : Join a group by replying a message containing invite link.',
-      '!join [invite_link] : Join into a group by providing their [invite_link].'
+      '!join : جوین دادن ربات به گروهی با لینک با ریپلی کردن آن',
+      '!join [invite_link] : جوین دادن به گروهی با دادن لینک'
       },
     patterns = {
       '^!join$',
